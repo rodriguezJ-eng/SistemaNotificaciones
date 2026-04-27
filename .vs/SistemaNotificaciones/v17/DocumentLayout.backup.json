@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\USUARIO\\Desktop\\SistemaNotificaciones\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{939F8237-745E-45AB-B3D3-78DA8D4E8871}|SistemaNotificaciones\\SistemaNotificaciones.csproj|c:\\users\\usuario\\desktop\\sistemanotificaciones\\sistemanotificaciones\\notificacionsms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{939F8237-745E-45AB-B3D3-78DA8D4E8871}|SistemaNotificaciones\\SistemaNotificaciones.csproj|solutionrelative:sistemanotificaciones\\notificacionsms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{939F8237-745E-45AB-B3D3-78DA8D4E8871}|SistemaNotificaciones\\SistemaNotificaciones.csproj|c:\\users\\usuario\\desktop\\sistemanotificaciones\\sistemanotificaciones\\notificacionemail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{939F8237-745E-45AB-B3D3-78DA8D4E8871}|SistemaNotificaciones\\SistemaNotificaciones.csproj|solutionrelative:sistemanotificaciones\\notificacionemail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{939F8237-745E-45AB-B3D3-78DA8D4E8871}|SistemaNotificaciones\\SistemaNotificaciones.csproj|c:\\users\\usuario\\desktop\\sistemanotificaciones\\sistemanotificaciones\\notificacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{939F8237-745E-45AB-B3D3-78DA8D4E8871}|SistemaNotificaciones\\SistemaNotificaciones.csproj|solutionrelative:sistemanotificaciones\\notificacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{939F8237-745E-45AB-B3D3-78DA8D4E8871}|SistemaNotificaciones\\SistemaNotificaciones.csproj|c:\\users\\usuario\\desktop\\sistemanotificaciones\\sistemanotificaciones\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{939F8237-745E-45AB-B3D3-78DA8D4E8871}|SistemaNotificaciones\\SistemaNotificaciones.csproj|solutionrelative:sistemanotificaciones\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +31,49 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "NotificacionSMS.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\SistemaNotificaciones\\SistemaNotificaciones\\NotificacionSMS.cs",
+              "RelativeDocumentMoniker": "SistemaNotificaciones\\NotificacionSMS.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\SistemaNotificaciones\\SistemaNotificaciones\\NotificacionSMS.cs",
+              "RelativeToolTip": "SistemaNotificaciones\\NotificacionSMS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T21:41:09.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NotificacionEmail.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\SistemaNotificaciones\\SistemaNotificaciones\\NotificacionEmail.cs",
+              "RelativeDocumentMoniker": "SistemaNotificaciones\\NotificacionEmail.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\SistemaNotificaciones\\SistemaNotificaciones\\NotificacionEmail.cs",
+              "RelativeToolTip": "SistemaNotificaciones\\NotificacionEmail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T21:40:56.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Notificacion.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\SistemaNotificaciones\\SistemaNotificaciones\\Notificacion.cs",
+              "RelativeDocumentMoniker": "SistemaNotificaciones\\Notificacion.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\SistemaNotificaciones\\SistemaNotificaciones\\Notificacion.cs",
+              "RelativeToolTip": "SistemaNotificaciones\\Notificacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T21:40:39.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\SistemaNotificaciones\\SistemaNotificaciones\\Program.cs",
               "RelativeDocumentMoniker": "SistemaNotificaciones\\Program.cs",
