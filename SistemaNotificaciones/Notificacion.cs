@@ -1,50 +1,93 @@
 ﻿public abstract class Notificacion
 {
-    private string _Mensaje;
-    private string _Destinatario;
-    private string  _Remitente;
-    private DateTime _FechaEnvio;
-    private bool _Estado;
+    // prueba de PR
+    private string _mensaje;
+    private string _destinatario;
+    private string _estado;
+    private DateTime _fechaEnvio;
 
-    public Notificacion(string mensaje, string destinatario, string remitente)
-    {
-        Mensaje = mensaje;
-        Destinatario = destinatario;
-        Remitente = remitente;
-        FechaEnvio = DateTime.Now;
-        Estado = false;
-    }
-
-    //Faltan validar propiedades
     public string Mensaje
     {
-        get { return _Mensaje; }
-        set { _Mensaje = value; }
+        get => _mensaje;
+        set
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("El mensaje no puede estar vacío.");
+            _mensaje = value;
+        }
     }
 
     public string Destinatario
     {
-        get { return _Destinatario; }
-        set { _Destinatario = value; }
+        get => _destinatario;
+        set
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("El destinatario no puede estar vacío.");
+            _destinatario = value;
+        }
     }
 
-    public string Remitente
+    public string Estado
     {
-        get { return _Remitente; }
-        set { _Remitente = value; }
+        get => _estado;
+        protected set => _estado = value; //solo modificado por la clase o sus derivadas
     }
 
     public DateTime FechaEnvio
     {
-        get { return _FechaEnvio; }
-        set { _FechaEnvio = value; }
+        get => _fechaEnvio;
+        protected set => _fechaEnvio = value; //solo modificado por la clase o sus derivadas
     }
 
-    public bool Estado
+    // Constructor
+    public Notificacion(string mensaje, string destinatario)
     {
-        get { return _Estado; }
-        set { _Estado = value; }
+        Mensaje = mensaje;
+        Destinatario = destinatario;
+        Estado = "Pendiente";
+        FechaEnvio = DateTime.MinValue; // aún no enviado
     }
+
+    /// <summary>
+    /// método tipo plantilla de diseño para las notificaciones push
+    /// </summary>
+    public void Enviar()
+    {
+        try
+        {
+            Validar();
+            Preparar();
+            RealizarEnvio();
+            ImprimirNotificacion();
+            Finalizar();
+
+            Estado = "Enviado";
+        }
+        catch (Exception ex)
+        {
+            Estado = "Error";
+            Console.WriteLine($"Error al enviar la notificación: {ex.Message}");
+        }
+    }
+
+    // Métodos opcionales que pueden o no ser sobrescritos por las clases derivadas
+    // Indican unicamente los "estados" del proceso de envio
+    protected virtual void Preparar()
+    {
+        Console.WriteLine("Preparando el envio...");
+    }
+
+    protected virtual void Finalizar()
+    {
+        FechaEnvio = DateTime.Now.Date;
+        Console.WriteLine("\nProceso finalizado.\n");
+    }
+
+    // Métodos abstractos obligatorios para las clases derivadas
+
+    protected abstract void Validar();
+    protected abstract void RealizarEnvio();
 
     public virtual void ImprimirNotificacion()//Tendra que cambiar el formato de salida dependiendo el mensaje
     {
@@ -53,7 +96,6 @@
         BodyInMiddleShadow(100);
         //BodyTime((string)FechaEnvio, 100);
         Title($"Destinatario: {Destinatario}", 100);
-        Title($"Remitente: {Remitente}", 100);
         BodyInMiddleShadow(100);
         Subtitle(Mensaje, 100);
         BodyInMiddleShadow(100);
@@ -62,14 +104,7 @@
         MenuBottom(100);
     }
 
-    public abstract void Enviar();
-
-    public abstract void Validar();
-
-    public abstract void PrepararMensaje();
-
-    public abstract void Finalizacion();
-
+    // Engel trabajo 
 
     /*Private void DeterminarWidth()
     {
