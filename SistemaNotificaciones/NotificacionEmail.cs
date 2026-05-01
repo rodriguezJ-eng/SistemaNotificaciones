@@ -28,15 +28,20 @@
     
     protected override void RealizarEnvio()
     {
-        Console.WriteLine($"Enviando email a {Destinatario} con asunto '{Asunto}' y mensaje: {Mensaje}");
+        Console.WriteLine($"Enviando email a {Destinatario}\n");
     }
 
     protected override void MostrarInformación()
     {
-        Console.WriteLine("=================================");
-        Console.WriteLine($"|fecha: {FechaEnvio}|"); 
-        Console.WriteLine($"|Para: {Destinatario}|");
-        Console.WriteLine($"| Estado: {Estado}|");
-        Console.WriteLine("=================================");
+        Console.WriteLine(new string('-', 40));
+        Console.WriteLine("\n--- EMAIL ---");
+        Console.WriteLine($"Para      : {Destinatario}");
+        Console.WriteLine($"Asunto    : {Asunto}");
+        Console.WriteLine("Mensaje   :\n");
+        Console.WriteLine($"{Mensaje}\n");
+
+        Console.WriteLine($"Estado    : {Estado}");
+        Console.WriteLine($"Fecha     : {FechaEnvio:dd/MM/yyyy HH:mm}");
+        Console.WriteLine(new string('-', 40));
     }
 }

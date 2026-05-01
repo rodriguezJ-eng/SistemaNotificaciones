@@ -59,10 +59,10 @@
             Validar();
             Preparar();
             RealizarEnvio();
+            Estado = "Enviado";
+            FechaEnvio = DateTime.Now;
             MostrarInformación();
             Finalizar();
-
-            Estado = "Enviado";
         }
         catch (Exception ex)
         {
@@ -87,7 +87,15 @@
     // Métodos abstractos obligatorios para las clases derivadas
 
     protected abstract void Validar();
+
+    /// <summary>
+    /// Realiza la simulación del envío
+    /// </summary>
     protected abstract void RealizarEnvio();
+
+    /// <summary>
+    /// Formateo del envío, presenta los datos del usuario, es la salida visual
+    /// </summary>
 
     protected abstract void MostrarInformación();
 }
