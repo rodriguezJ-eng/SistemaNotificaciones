@@ -14,7 +14,7 @@
         }
     }
 
-    public NotificacionEmail(string mensaje, string correo, string asunto) : base(mensaje,correo)
+    public NotificacionEmail(string asunto, string mensaje, string correo) : base(mensaje, correo)
     {
         Asunto = asunto;
     }
@@ -35,6 +35,7 @@
     {
         Console.WriteLine(new string('-', 40));
         Console.WriteLine("\n--- EMAIL ---");
+        Console.WriteLine($"De        : {Remitente}");
         Console.WriteLine($"Para      : {Destinatario}");
         Console.WriteLine($"Asunto    : {Asunto}");
         Console.WriteLine("Mensaje   :\n");

@@ -1,15 +1,15 @@
 ﻿using System.Diagnostics;
 
 Notificacion notificacionEmail = new NotificacionEmail(
+    "registro de estudiante en curso",
     "Hola Bienvenido",
-    "jonathan.rodriguez674@std.uni.edu.ni",
-    "registro de estudiante en curso"); 
+    "jonathan.rodriguez674@std.uni.edu.ni"); 
 
 notificacionEmail.Enviar();
 
 Notificacion correo = new NotificacionEmail(
-    "Saludos",
+    "prueba error",
     "correo.ejemploInvalido.com",
-    "prueba error");
+    "saludo1");
 
 correo.Enviar();
