@@ -1,8 +1,16 @@
-﻿public class NotificacionWhatsApp : Notificacion
+﻿/// <summary>
+/// Representa una notificación enviada a través de WhatsApp, incluyendo la validación y el envío del mensaje al número
+/// de teléfono especificado.
+/// </summary>
+/// <remarks>Esta clase hereda de Notificacion y proporciona la lógica específica para el envío de mensajes
+/// mediante WhatsApp. El número de teléfono debe cumplir con el formato internacional E.164, es decir, contener
+/// exactamente 15 dígitos, incluyendo el código de país. Se lanzarán excepciones si el número no cumple con los
+/// requisitos de formato o contiene caracteres no numéricos.</remarks>
+
+public class NotificacionWhatsApp : Notificacion
 {
-    // Se establece los atributos de la clase hija y sus get y set con sus respectivas validaciones
+    // Se establece el atributo de la clase hija
     private string? _numeroTelefono;
-    private bool _EstaBloqueado;
 
     public NotificacionWhatsApp(string? mensaje, string? numeroTelefono) : base(mensaje, numeroTelefono)
     {
@@ -10,6 +18,7 @@
 
     }
 
+    // Propiedad
     public string? NumeroTelefono
     {
         get => _numeroTelefono;
@@ -27,19 +36,11 @@
         }
     }
 
-    public bool EstaBloqueado
-    {
-        get => _EstaBloqueado;
-        set => _EstaBloqueado = value;
-    }
-
     protected override void Validar()
     {
         
         if (NumeroTelefono.Length != 15) // Segun el formato internacional, el número de teléfono de WhatsApp debe tener 15 dígitos (incluyendo el código de país). Estandarizado por UIT-T en la recomendación E. 164
             throw new ArgumentException("El número debe tener 15 dígitos como máximo. Incluyendo el código de país.");
-        if (EstaBloqueado)
-            throw new InvalidOperationException("No se puede enviar el mensaje porque el contacto está bloqueado.");
     }
 
     protected override void RealizarEnvio()
