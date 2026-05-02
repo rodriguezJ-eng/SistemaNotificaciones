@@ -31,3 +31,10 @@ Notificacion smsMensajeLargo = new NotificacionSMS(
     "88888888"
 );
 smsMensajeLargo.Enviar();
+
+NotificacionWhatsApp whatsApp = new NotificacionWhatsApp(
+    "Hola, este es un mensaje de WhatsApp para la posteridad)",
+    "87154642"
+);
+
+whatsApp.Enviar();
