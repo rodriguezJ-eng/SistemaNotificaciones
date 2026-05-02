@@ -1,19 +1,33 @@
-<<<<<<< HEAD
-﻿
-=======
-﻿using System.Diagnostics;
+using System.Diagnostics;
 
 Notificacion notificacionEmail = new NotificacionEmail(
+    "registro de estudiante en curso",
     "Hola Bienvenido",
-    "jonathan.rodriguez674@std.uni.edu.ni",
-    "registro de estudiante en curso"); 
+    "jonathan.rodriguez674@std.uni.edu.ni"); 
 
 notificacionEmail.Enviar();
 
 Notificacion correo = new NotificacionEmail(
-    "Saludos",
+    "prueba error",
     "correo.ejemploInvalido.com",
-    "prueba error");
+    "saludo1");
 
 correo.Enviar();
->>>>>>> 4c49437bcc3204c433061f60e96f415c7e5d8641
+
+Notificacion smsValido = new NotificacionSMS(
+    "Hola, este es un mensaje SMS :)",
+    "88888888"
+);
+smsValido.Enviar();
+
+Notificacion smsNumeroInvalido = new NotificacionSMS(
+    "Mensaje corto",
+    "1234"
+);
+smsNumeroInvalido.Enviar();
+
+Notificacion smsMensajeLargo = new NotificacionSMS(
+    "Bueno esto se supone que debe ser un mensaje largo que tenga mas de 160 caracteres incluyendo espacios pero ya no se que tanto mas escribir asi que mejor hasta aca lo dejo.",
+    "88888888"
+);
+smsMensajeLargo.Enviar();

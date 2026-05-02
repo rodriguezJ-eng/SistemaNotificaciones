@@ -14,7 +14,7 @@
         }
     }
 
-    public NotificacionEmail(string mensaje, string correo, string asunto) : base(mensaje,correo)
+    public NotificacionEmail(string asunto, string mensaje, string correo) : base(mensaje, correo)
     {
         Asunto = asunto;
     }
@@ -28,15 +28,21 @@
     
     protected override void RealizarEnvio()
     {
-        Console.WriteLine($"Enviando email a {Destinatario} con asunto '{Asunto}' y mensaje: {Mensaje}");
+        Console.WriteLine($"Enviando email a {Destinatario}\n");
     }
 
     protected override void MostrarInformación()
     {
-        Console.WriteLine("=================================");
-        Console.WriteLine($"|fecha: {FechaEnvio}|"); 
-        Console.WriteLine($"|Para: {Destinatario}|");
-        Console.WriteLine($"| Estado: {Estado}|");
-        Console.WriteLine("=================================");
+        Console.WriteLine(new string('-', 40));
+        Console.WriteLine("\n--- EMAIL ---");
+        Console.WriteLine($"De        : {Remitente}");
+        Console.WriteLine($"Para      : {Destinatario}");
+        Console.WriteLine($"Asunto    : {Asunto}");
+        Console.WriteLine("Mensaje   :\n");
+        Console.WriteLine($"{Mensaje}\n");
+
+        Console.WriteLine($"Estado    : {Estado}");
+        Console.WriteLine($"Fecha     : {FechaEnvio:dd/MM/yyyy HH:mm}");
+        Console.WriteLine(new string('-', 40));
     }
 }

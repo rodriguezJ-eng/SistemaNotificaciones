@@ -3,6 +3,7 @@
     // prueba de PR
     private string _mensaje;
     private string _destinatario;
+    private string _remitente;
     private string _estado;
     private DateTime _fechaEnvio;
 
@@ -28,10 +29,17 @@
         }
     }
 
+    public string Remitente
+    {
+        get => _remitente;
+
+        private set => _remitente = value; //solo modificado por la clase
+    }
+
     public string Estado
     {
         get => _estado;
-        protected set => _estado = value; //solo modificado por la clase o sus derivadas
+        private set => _estado = value; //solo modificado por la clase o sus derivadas
     }
 
     public DateTime FechaEnvio
@@ -45,6 +53,7 @@
     {
         Mensaje = mensaje;
         Destinatario = destinatario;
+        Remitente = "EmpresaX";
         Estado = "Pendiente";
         FechaEnvio = DateTime.MinValue; // aún no enviado
     }
@@ -59,10 +68,10 @@
             Validar();
             Preparar();
             RealizarEnvio();
+            Estado = "Enviado";
+            FechaEnvio = DateTime.Now;
             MostrarInformación();
             Finalizar();
-
-            Estado = "Enviado";
         }
         catch (Exception ex)
         {
@@ -87,7 +96,15 @@
     // Métodos abstractos obligatorios para las clases derivadas
 
     protected abstract void Validar();
+
+    /// <summary>
+    /// Realiza la simulación del envío
+    /// </summary>
     protected abstract void RealizarEnvio();
+
+    /// <summary>
+    /// Formateo del envío, presenta los datos del usuario, es la salida visual
+    /// </summary>
 
     protected abstract void MostrarInformación();
 }
