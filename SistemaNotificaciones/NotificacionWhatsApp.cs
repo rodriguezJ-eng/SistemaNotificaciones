@@ -39,8 +39,10 @@ public class NotificacionWhatsApp : Notificacion
     protected override void Validar()
     {
         
-        if (NumeroTelefono.Length <= 15 || NumeroTelefono.Length >= 3) // Segun el formato internacional, el número de teléfono de WhatsApp debe tener 15 dígitos (incluyendo el código de país). Estandarizado por UIT-T en la recomendación E. 164. Tiene que ser mayor a 3 dígitos para evitar números muy cortos que no son válidos.
+        if (NumeroTelefono.Length > 15) // Segun el formato internacional, el número de teléfono de WhatsApp debe tener 15 dígitos (incluyendo el código de país). Estandarizado por UIT-T en la recomendación E. 164.
             throw new ArgumentException("El número debe tener 15 dígitos como máximo. Incluyendo el código de país.");
+        if (NumeroTelefono.Length < 7)
+            throw new ArgumentException("El número debe tener al menos 7 dígitos para ser válido.");// Tiene que ser mayor a 7 dígitos para evitar números muy cortos que no son válidos.
     }
 
     protected override void RealizarEnvio()

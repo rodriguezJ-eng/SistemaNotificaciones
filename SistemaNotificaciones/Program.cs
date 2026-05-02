@@ -1,5 +1,5 @@
 using System.Diagnostics;
-
+/*
 Notificacion notificacionEmail = new NotificacionEmail(
     "registro de estudiante en curso",
     "Hola Bienvenido",
@@ -31,7 +31,7 @@ Notificacion smsMensajeLargo = new NotificacionSMS(
     "88888888"
 );
 smsMensajeLargo.Enviar();
-
+*/
 NotificacionWhatsApp whatsApp = new NotificacionWhatsApp(
     "Hola, este es un mensaje de WhatsApp para la posteridad)",
     "87154642"
