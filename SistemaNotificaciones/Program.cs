@@ -1,6 +1,17 @@
+/*
+ * INTEGRANTES:
+ * Jonathan Alejandro Rodríguez López
+ * Engel Josué Aburto Zeledón
+ * Rashel De los Ángeles Sánchez González
+ * Allan Enrique Real Torres
+ */
 
 // ========================================= Casos Correctos ======================================
-
+Console.WriteLine("INTEGRANTES");
+Console.WriteLine("Jonathan Alejandro Rodríguez López");
+Console.WriteLine("Engel Josué Aburto Zeledón");
+Console.WriteLine("Rashel De los Ángeles Sánchez González");
+Console.WriteLine("Allan Enrique Real Torres\n\n");
 //EMAIL
 NotificacionEmail notificacionEmail = new NotificacionEmail(
     "example@gmail.com",

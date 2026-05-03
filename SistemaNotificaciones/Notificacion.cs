@@ -5,7 +5,6 @@
 /// </summary>
 public abstract class Notificacion
 {
-    // prueba de PR
     private string _mensaje;
     private string _destinatario;
     private string _remitente;
