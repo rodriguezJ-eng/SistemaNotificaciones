@@ -22,7 +22,9 @@ public class NotificacionSMS : Notificacion
             if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentException("El número no puede estar vacío.");
 
-            
+            if (value.Any(char.IsWhiteSpace))
+                throw new ArgumentException("El número no puede contener espacios.");
+
             foreach (char c in value)
             {
                 if (c < '0' || c > '9')
@@ -61,7 +63,8 @@ public class NotificacionSMS : Notificacion
     /// </summary>
     protected override void RealizarEnvio()
     {
-        Console.WriteLine($"Enviando SMS a {NumeroTelefono}...\n");
+        Console.WriteLine($"Enviando SMS a {NumeroTelefono}...");
+        Console.WriteLine("SMS enviado.");
     }
 
     /// <summary>
@@ -70,7 +73,7 @@ public class NotificacionSMS : Notificacion
     protected override void MostrarInformación()
     {
         Console.WriteLine(new string('-', 40));
-        Console.WriteLine("\n--- SMS ---");
+        Console.WriteLine("--- SMS ---");
         Console.WriteLine($"De        : {Remitente}");
         Console.WriteLine($"Para      : {NumeroTelefono}");
         Console.WriteLine("Mensaje   :\n");

@@ -101,9 +101,9 @@ public class NotificacionWhatsApp : Notificacion
     /// </summary>
     protected override void RealizarEnvio()
     {
-        Console.WriteLine($"Enviando mensaje por WhatsApp a {NumeroCompleto}...\n");
+        Console.WriteLine($"Enviando mensaje por WhatsApp a {NumeroCompleto}...");
 
-        Console.WriteLine("Mensaje enviado.");
+        Console.WriteLine("Mensaje por WhatsApp enviado.");
     }
 
     /// <summary>
@@ -112,12 +112,12 @@ public class NotificacionWhatsApp : Notificacion
     protected override void MostrarInformación()
     {
         Console.WriteLine(new string('-', 40));
-        Console.WriteLine("\n--- WHATSAPP ---");
+        Console.WriteLine("--- WHATSAPP ---");
         Console.WriteLine($"De        : {Remitente}");
         Console.WriteLine($"Para      : {NumeroCompleto}");
         Console.WriteLine("Mensaje   :\n");
         Console.WriteLine($"{Mensaje}\n");
-        Console.WriteLine($"Estado    : {Estado}");
+        Console.WriteLine($"Estado    : {(Estado ? "Enviado" : "No enviado")}");
         Console.WriteLine($"Fecha     : {FechaEnvio:dd/MM/yyyy HH:mm}");
         Console.WriteLine(new string('-', 40));
     }

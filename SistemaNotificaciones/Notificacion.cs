@@ -79,7 +79,7 @@ public abstract class Notificacion
     {
         Mensaje = mensaje;
         Destinatario = destinatario;
-        Remitente = "EmpresaX";
+        Remitente = "InfinitiNoty";
         Estado = false;
         FechaEnvio = DateTime.MinValue;
     }
@@ -123,7 +123,7 @@ public abstract class Notificacion
     /// </summary>
     protected virtual void Finalizar()
     {
-        Console.WriteLine("\nProceso finalizado.\n");
+        Console.WriteLine("Proceso finalizado.\n");
     }
 
     /// <summary>

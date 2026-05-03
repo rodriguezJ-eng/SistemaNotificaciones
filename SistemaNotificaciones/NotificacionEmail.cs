@@ -22,6 +22,7 @@ public class NotificacionEmail : Notificacion
             if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentException("El asunto no puede estar vacío.");
+                return;
             }
             _asunto = value;
         }
@@ -75,7 +76,8 @@ public class NotificacionEmail : Notificacion
     /// </summary>
     protected override void RealizarEnvio()
     {
-        Console.WriteLine($"Enviando email a {Destinatario}\n");
+        Console.WriteLine($"Enviando email a {Destinatario}");
+        Console.WriteLine("Email enviado.");
     }
 
     /// <summary>
@@ -84,7 +86,7 @@ public class NotificacionEmail : Notificacion
     protected override void MostrarInformación()
     {
         Console.WriteLine(new string('-', 40));
-        Console.WriteLine("\n--- EMAIL ---");
+        Console.WriteLine("--- EMAIL ---");
         Console.WriteLine($"De        : {Remitente}");
         Console.WriteLine($"Para      : {Destinatario}");
         Console.WriteLine($"Asunto    : {Asunto}");
