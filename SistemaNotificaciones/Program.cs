@@ -34,7 +34,8 @@ smsMensajeLargo.Enviar();
 */
 NotificacionWhatsApp whatsApp = new NotificacionWhatsApp(
     "Hola, este es un mensaje de WhatsApp para la posteridad)",
-    "87154642"
+    "87154642",
+    "+505"
 );
 
 whatsApp.Enviar();
