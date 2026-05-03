@@ -1,11 +1,10 @@
 ﻿/// <summary>
-/// Representa una notificación enviada a través de WhatsApp, incluyendo la validación y el envío del mensaje al número
-/// de teléfono especificado.
+/// Representa una notificación enviada por WhatsApp.
 /// </summary>
-/// <remarks>Esta clase hereda de Notificacion y proporciona la lógica específica para el envío de mensajes
-/// mediante WhatsApp. El número de teléfono debe cumplir con el formato internacional E.164, es decir, contener
-/// exactamente 15 dígitos, incluyendo el código de país. Se lanzarán excepciones si el número no cumple con los
-/// requisitos de formato o contiene caracteres no numéricos.</remarks>
+/// <remarks>
+/// Esta clase implementa la lógica específica para el envío de mensajes mediante WhatsApp.
+/// El número de teléfono debe cumplir el formato internacional E.164. https://www.twilio.com/docs/glossary/what-e164
+/// </remarks>
 
 public class NotificacionWhatsApp : Notificacion
 {
@@ -13,13 +12,16 @@ public class NotificacionWhatsApp : Notificacion
     private string? _numeroTelefono;
     private string? _codigoTelfono;
 
-    public NotificacionWhatsApp(string? mensaje, string? numeroTelefono, string? codigoTelefono) : base(mensaje, numeroTelefono)
+    public NotificacionWhatsApp(string? mensaje, string? codigoTelefono, string? numeroTelefono) : base(mensaje, numeroTelefono)
     {
         CodigoTelefono = codigoTelefono;
         NumeroTelefono = numeroTelefono;
     }
 
-    // Propiedad
+    /// <summary>
+    /// Número de teléfono del destinatario.
+    /// Debe contener únicamente dígitos.
+    /// </summary>
     public string? NumeroTelefono
     {
         get => _numeroTelefono;
@@ -28,15 +30,16 @@ public class NotificacionWhatsApp : Notificacion
             if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentException("El número no puede estar vacío.");
             
-            foreach (char c in value)
-            {
-                if (c < '0' || c > '9')
-                    throw new ArgumentException("El número debe contener solo dígitos.");
-            }
-            _numeroTelefono = CodigoTelefono + " " + value;
+            if(!value.All(char.IsDigit))
+                throw new ArgumentException("El número debe contener solo dígitos.");
+
+            _numeroTelefono = value;
         }
     }
-    //.Substring(1)
+
+    /// <summary>
+    /// Código de país del número de teléfono.
+    /// </summary>
     public string? CodigoTelefono
     {
         get => _codigoTelfono;
@@ -49,48 +52,69 @@ public class NotificacionWhatsApp : Notificacion
             {
                 string numeros = value.Substring(1);
 
+                if(!numeros.All(char.IsDigit))
+                    throw new ArgumentException("El código de teléfono debe contener solo dígitos después del símbolo '+'.");
+
                 if (numeros.Length < 1 || numeros.Length > 3)
                     throw new ArgumentException("El código de teléfono debe tener entre 1 y 3 dígitos.");
+
+                _codigoTelfono = value;
             }
             else
             {
+                if(!value.All(char.IsDigit))
+                    throw new ArgumentException("El código de teléfono debe contener solo dígitos.");
+
                 if (value.Length < 1 || value.Length > 3)
                     throw new ArgumentException("El código de teléfono debe tener entre 1 y 3 dígitos.");
-            }
 
-            int posicion = 0;
-            foreach (char c in value)
-            {
-                posicion++;
-                if (c < '0' || c > '9')
-                    throw new ArgumentException("El código de teléfono debe contener solo dígitos.");
-                if(c == '+' && posicion == 1)
-                    _codigoTelfono = value;
+                _codigoTelfono = "+" + value;
             }
-            _codigoTelfono = "+" + value;
         }
     }
 
+    /// <summary>
+    /// Número completo en formato internacional.
+    /// </summary>
+    public string NumeroCompleto => $"{CodigoTelefono} {NumeroTelefono}";
+
+
+    /// <summary>
+    /// Valida el número de WhatsApp según el formato estándar E.164.
+    /// </summary>
     protected override void Validar()
     {
-        
-        if (NumeroTelefono.Trim().Length > 15) // Segun el formato internacional, el número de teléfono de WhatsApp debe tener 15 dígitos (incluyendo el código de país). Estandarizado por UIT-T en la recomendación E. 164.
+        if (NumeroTelefono.Length < 6 || NumeroTelefono.Length > 15) // Segun el formato internacional, el número de teléfono de WhatsApp debe tener 15 dígitos (incluyendo el código de país). Estandarizado por UIT-T en la recomendación E. 164.
             throw new ArgumentException("El número debe tener 15 dígitos como máximo. Incluyendo el código de país.");
-        if (NumeroTelefono.Length < 7)
-            throw new ArgumentException("El número debe tener al menos 7 dígitos para ser válido.");// Tiene que ser mayor a 7 dígitos para evitar números muy cortos que no son válidos.
+
+        //Validación E.164 
+        //https://www.twilio.com/docs/glossary/what-e164
+
+        int totalDigits = CodigoTelefono.Substring(1).Length + NumeroTelefono.Length;
+
+        if(totalDigits > 15)
+            throw new ArgumentException("El número es demasiado largo");
     }
 
+    /// <summary>
+    /// Simula el envío de mensaje por WhatsApp.
+    /// </summary>
     protected override void RealizarEnvio()
     {
-        Console.WriteLine($"Enviando WhatsApp a {NumeroTelefono}...\n");
+        Console.WriteLine($"Enviando mensaje por WhatsApp a {NumeroCompleto}...\n");
+
+        Console.WriteLine("Mensaje enviado.");
     }
 
+    /// <summary>
+    /// Muestra la información formateada del mensaje enviado.
+    /// </summary>
     protected override void MostrarInformación()
     {
         Console.WriteLine(new string('-', 40));
         Console.WriteLine("\n--- WHATSAPP ---");
         Console.WriteLine($"De        : {Remitente}");
-        Console.WriteLine($"Para      : {NumeroTelefono}");
+        Console.WriteLine($"Para      : {NumeroCompleto}");
         Console.WriteLine("Mensaje   :\n");
         Console.WriteLine($"{Mensaje}\n");
         Console.WriteLine($"Estado    : {Estado}");
