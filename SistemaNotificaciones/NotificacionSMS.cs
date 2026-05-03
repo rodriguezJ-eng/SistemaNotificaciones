@@ -1,13 +1,19 @@
 ﻿/// <summary>
-/// una representacion de notificacion de tipo SMS.
-/// donde se encarga de validar y enviar mensajes de texto a un número telefónico,
-/// verificando que el número contenga solo dígitos y que el mensaje no exceda los caracteres permitidos son hasta 160.
+/// Representa una notificación de tipo SMS.
 /// </summary>
+/// <remarks>
+/// Esta clase hereda de Notificacion e implementa la lógica específica
+/// para el envío de mensajes SMS.
+/// </remarks>
 
 public class NotificacionSMS : Notificacion
 {
     private string _numeroTelefono;
 
+    /// <summary>
+    /// Número de teléfono del destinatario del SMS.
+    /// Debe contener únicamente dígitos.
+    /// </summary>
     public string NumeroTelefono
     {
         get => _numeroTelefono;
@@ -27,15 +33,22 @@ public class NotificacionSMS : Notificacion
         }
     }
 
+    /// <summary>
+    /// Inicializa una nueva instancia de NotificacionSMS.
+    /// </summary>
+    /// <param name="mensaje">Contenido del mensaje SMS</param>
+    /// <param name="numeroTelefono">Número de teléfono del destinario</param>
     public NotificacionSMS(string mensaje, string numeroTelefono)
         : base(mensaje, numeroTelefono)
     {
         NumeroTelefono = numeroTelefono;
     }
 
+    /// <summary>
+    /// Valida las reglas del SMS antes del envío.
+    /// </summary>
     protected override void Validar()
     {
-        
         if (NumeroTelefono.Length != 8)
             throw new ArgumentException("El número debe tener 8 dígitos.");
 
@@ -43,11 +56,17 @@ public class NotificacionSMS : Notificacion
             throw new ArgumentException("El mensaje no puede superar los 160 caracteres.");
     }
 
+    /// <summary>
+    /// Simula el envío del mensaje SMS al destinatario.
+    /// </summary>
     protected override void RealizarEnvio()
     {
         Console.WriteLine($"Enviando SMS a {NumeroTelefono}...\n");
     }
 
+    /// <summary>
+    /// Muestra la información formateada del SMS enviado.
+    /// </summary>
     protected override void MostrarInformación()
     {
         Console.WriteLine(new string('-', 40));
@@ -57,7 +76,7 @@ public class NotificacionSMS : Notificacion
         Console.WriteLine("Mensaje   :\n");
         Console.WriteLine($"{Mensaje}\n");
 
-        Console.WriteLine($"Estado    : {Estado}");
+        Console.WriteLine($"Estado    : {(Estado ? "Enviado" : "No enviado")}");
         Console.WriteLine($"Fecha     : {FechaEnvio:dd/MM/yyyy HH:mm}");
         Console.WriteLine(new string('-', 40));
     }
